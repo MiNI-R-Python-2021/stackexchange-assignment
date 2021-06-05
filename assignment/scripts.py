@@ -114,10 +114,8 @@ def find_100_most_frequent_words_in_posts(postsXML_directory):
 
 def show_most_frequent_words_graph(word_frequency_df):
     data = dict(zip(word_frequency_df['word'].tolist(), word_frequency_df['frequency'].tolist()))
-    from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
     for word in STOPWORDS:
         if data.get(word) : data.pop(word)
-    import matplotlib.pyplot as plt
     wc = WordCloud(background_color='white',
                 stopwords=STOPWORDS,
                 max_words=200).generate_from_frequencies(data)
